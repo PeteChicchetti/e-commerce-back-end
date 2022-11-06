@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
     const oneCategory = await Category.findByPk(req.params.id, {
       // included associated Products
       include: [{model: Product}]
-    })
+    });
     // Respond with json from the api
     res.status(200).json(oneCategory);
   } catch (err) {
