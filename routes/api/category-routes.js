@@ -7,18 +7,28 @@ router.get('/', async (req, res) => {
   // find all categories
   try {
     const allCategories = await Category.findAll({
+      // Included associated Products
       include: [{model: Product}]
     });
+    // Respond with json from the api
     res.status(200).json(allCategories);
   } catch (err) {
     res.status(500).json(err);
   }
-  // be sure to include its associated Products
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // find one category by its `id` value
-  // be sure to include its associated Products
+  try {
+    const oneCategory = await Category.findOne({
+      // included associated Products
+      include: [{model: Product}]
+    })
+    // Respond with json from the api
+    res.status(200).json(oneCategory);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.post('/', (req, res) => {
