@@ -36,14 +36,31 @@ router.post('/', async (req, res) => {
   // create a new tag
   try {
     const addTag = await Tag.create(req.body);
+    // Respond with json from the api
     res.status(200).json(addTag);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
+  try {
+    const editTag = await Tag.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    // If statement for a null user
+    if (!editTag) {
+      res.status(404).json({ message: 'No tag found with that ID!'});
+      return;
+    }
+    // Respond with json from the api
+    res.status(200).json(editTag);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete('/:id', (req, res) => {
