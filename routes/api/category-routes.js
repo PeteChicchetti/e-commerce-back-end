@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   // find all categories
   try {
     const allCategories = await Category.findAll({
-      // Included associated information
+      // Included associated Products
       include: [{model: Product}]
     });
     // Respond with json from the API
