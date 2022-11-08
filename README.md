@@ -3,6 +3,8 @@ This application uses an Express.js API and configures it to use Sequelize to in
 
 ## Description
 
+Demo Video: https://drive.google.com/file/d/1gbi8idyC2QdCHJ2gQfGxk8zAcQ_R2Jcv/view
+
 This application allows the user to preform CRUD functions on a MySQL database using JavaScript and Sequelize.
           
 ## Table of Contents
