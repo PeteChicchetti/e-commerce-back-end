@@ -77,7 +77,7 @@ router.delete('/:id', async (req, res) => {
       return;
     }
     // Respond with json from the api
-    res.status(200).json(editTag);
+    res.status(200).json(deleteTag);
   } catch (err) {
     res.status(500).json(err);
   }
